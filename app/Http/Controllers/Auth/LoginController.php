@@ -68,9 +68,11 @@ class LoginController extends Controller
                 'token' => $token
             ];
 
-            response($response, 200);
+            return response($response, 200);
 
-            return redirect()->route('admin.home');
+            // redirect()->route('admin.home');
+
+            // return response()->json($response);
         }
 
         throw new AuthenticationException(
