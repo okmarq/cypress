@@ -18,7 +18,6 @@ return new class extends Migration
             $table->datetime('email_verified_at')->nullable();
             $table->string('password');
             $table->datetime('last_task_add_date')->nullable();
-            $table->datetime('last_login_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

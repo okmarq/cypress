@@ -74,18 +74,25 @@ class RegisterController extends Controller
 
     protected function register(Request $request)
     {
-        $this->validate($request, [
+        $fields = $request->validate([
             'name' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'string|required|min:8|confirmed',
         ]);
 
         $user = User::create([
-            'name'     => $request['name'],
-            'email'    => $request['email'],
-            'password' => Hash::make($request['password']),
+            'name'     => $fields['name'],
+            'email'    => $fields['email'],
+            'password' => Hash::make($fields['password']),
         ]);
 
-        return response()->json($user);
+        $token = $user->createToken('Cypress')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
     }
 }

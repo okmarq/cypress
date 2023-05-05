@@ -9,6 +9,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -48,27 +49,48 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $this->validate($request, [
+        $fields = $request->validate([
             'email' => 'required|string|email|max:255',
             'password' => 'string|required|min:8',
         ]);
 
         if (
             Auth::attempt([
-                'email' => $request->email,
-                'password' => $request->password,
+                'email' => $fields['email'],
+                'password' => $fields['password'],
             ])
         ) {
             $user = User::find(auth()->id());
+            $token = $user->createToken('Cypress')->plainTextToken;
 
-            $user->login_date;
-            $user->last_login_date = now();
+            $response = [
+                'user' => $user,
+                'token' => $token
+            ];
 
-            return response()->json($user);
+            response($response, 200);
+
+            return redirect()->route('admin.home');
         }
 
         throw new AuthenticationException(
             'Your credentials does not match our record.'
         );
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->user()->tokens()->delete();
+
+        Auth::logout();
+        Session::flush();
+
+        $response = [
+            'message' => 'Logged out'
+        ];
+
+        response($response, 200);
+
+        return redirect()->route('admin.home');
     }
 }

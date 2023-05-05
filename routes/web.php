@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TaskStatusController;
 use App\Http\Controllers\Admin\TaskTagController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +37,7 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
-// Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -79,3 +80,6 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', [ChangePasswordController::class, 'destroy'])->name('password.destroyProfile');
     }
 });
+
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
