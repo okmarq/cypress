@@ -23,4 +23,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/api-login', [LoginController::class, 'login'])->name('api-login');
