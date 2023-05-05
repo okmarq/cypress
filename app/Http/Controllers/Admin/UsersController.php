@@ -87,4 +87,15 @@ class UsersController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function activity(Request $request)
+    {
+        $user = auth()->user();
+        $activity = [
+            'user' => $user,
+            'assigned_to' => $user->assignedToTasks(),
+            'assigned_by' => $user->assignedByTasks()
+        ];
+        return $activity;
+    }
 }

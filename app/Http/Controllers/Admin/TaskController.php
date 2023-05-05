@@ -68,16 +68,20 @@ class TaskController extends Controller
         // if ($tasks > 0 && !($tasks % 4)) {
         //     abort_if(true, Response::HTTP_FORBIDDEN, 'Exceeded limit of 4, Try again after 24 Hours');
         // }
-
-        $request->merge(['assigned_by_id' => $user->id]);
-        if (!is_null($request->assigned_to_id)) {
-            // assign to just the indicated user
+        $request->mergeIfMissing(['assigned_by_id' => $user->id]);
+        if (!$user->getIsAdminAttribute()) {
+            $request->mergeIfMissing(['assigned_to_id' => $user->id]);
             $this->globalTask($request);
         } else {
-            // assign task to admin to represent the global task
-            $this->globalTask($request);
-            // then to every other user except the admins
-            $this->allUsersExceptAdmin($request);
+            if (!is_null($request->assigned_to_id)) {
+                // assign to just the indicated user
+                $this->globalTask($request);
+            } else {
+                // assign task to admin to represent the global task
+                $this->globalTask($request);
+                // then to every other user except the admins
+                $this->allUsersExceptAdmin($request);
+            }
         }
 
         return redirect()->route('admin.tasks.index');
