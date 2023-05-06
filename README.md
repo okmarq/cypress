@@ -27,7 +27,21 @@
 - activity
   - get logged in user’s activities by a range of dates, for example, the range of dates may look like this “1/3/22 - 5/3/22”
 
-## usage
+## Setup
+
+- `git clone https://github.com/okmarq/cypress.git`
+- `cd cypress`
+- `composer install`
+- `npm install`
+- `php artisan key:generate`
+- `composer dump-autoload`
+- create database `cypress`
+- duplicate .env.example
+- remame .env.example to .env
+- update .env to reflect database credentials
+- `php artisan migrate --seed`
+
+## Usage
 
 Registration, Login and Activity endpoints can be used in postman
 
