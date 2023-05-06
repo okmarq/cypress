@@ -1,7 +1,8 @@
 # Laravel Practical Task Requirements
 
 - Create an admin panel using any template you prefer with a super admin login feature.
-- In the admin panel the super admin should be able to see the dates of the calendar and create an activity for each day. The admin may add a maximum of 4 activities for each day.
+- In the admin panel the super admin should be able to see the dates of the calendar and create an activity for each day.
+- The admin may add a maximum of 4 activities for each day.
 - Each activity should have the following fields
   - Title
   - Description
@@ -19,6 +20,9 @@
 
 ## APIs
 
-- user registration
-- user login
-- get logged in user’s activities by a range of dates, for example, the range of dates may look like this “1/3/22 - 5/3/22”
+- register
+  - user registration
+- login
+  - user login
+- activity
+  - get logged in user’s activities by a range of dates, for example, the range of dates may look like this “1/3/22 - 5/3/22”
