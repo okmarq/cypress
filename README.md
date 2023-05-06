@@ -26,3 +26,34 @@
   - user login
 - activity
   - get logged in user’s activities by a range of dates, for example, the range of dates may look like this “1/3/22 - 5/3/22”
+
+## usage
+
+Registration, Login and Activity endpoints can be used in postman
+
+login credentials for preset users
+
+name: Admin
+email: admin@admin.com
+password: password
+role: Admin
+
+name: Guest
+email: guest@guest.com
+password: password
+role: User
+
+name: Joel
+email: joel@joel.com
+password: password
+role: User
+
+name: Marvelous
+email: marvelous@marvelous.com
+password: password
+role: User
+
+name: Cypress
+email: cypresscypress.com
+password: password
+role: Admin
