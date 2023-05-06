@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "4ff988bc-6483-4e29-bf13-61d853ff92cb",
+		"name": "Cypress",
+		"description": "Endpoints that consist of Register, Login, User Activity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12234874",
+		"_collection_link": "https://okmarq-star-team.postman.co/workspace/46669be5-33b6-4f8b-a03a-2f327663fbcf/collection/12234874-4ff988bc-6483-4e29-bf13-61d853ff92cb?action=share&creator=12234874&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jane Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jane@doe.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cypress.test/api/register",
+					"protocol": "https",
+					"host": [
+						"cypress",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Register to create an account with cypress task scheduler"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "joel@joel.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cypress.test/api/api-login",
+					"protocol": "https",
+					"host": [
+						"cypress",
+						"test"
+					],
+					"path": [
+						"api",
+						"api-login"
+					]
+				},
+				"description": "sing in to access your tasks"
+			},
+			"response": []
+		},
+		{
+			"name": "User Activities",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "15|ELyogOV6myYzVI6GyxYwFgrHqlOuvW9lIcSNA3nX",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://cypress.test/api/activity?start_date=4/5/23&end_date=6/5/23",
+					"protocol": "https",
+					"host": [
+						"cypress",
+						"test"
+					],
+					"path": [
+						"api",
+						"activity"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "4/5/23"
+						},
+						{
+							"key": "end_date",
+							"value": "6/5/23"
+						}
+					]
+				},
+				"description": "view the login activity of a logged in user"
+			},
+			"response": []
+		}
+	]
+}
