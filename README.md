@@ -38,23 +38,18 @@ login credentials for preset users
 - name: Admin
   - email: admin@admin.com
   - password: password
-  - role: Admin
 - name: Cypress
   - email: cypress@cypress.com
   - password: password
-  - role: Admin
 
 ### User
 
 - name: Guest
   - email: guest@guest.com
   - password: password
-  - role: User
 - name: Joel
   - email: joel@joel.com
   - password: password
-  - role: User
 - name: Marvelous
   - email: marvelous@marvelous.com
   - password: password
-  - role: User
