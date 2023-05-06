@@ -33,27 +33,31 @@ Registration, Login and Activity endpoints can be used in postman
 
 login credentials for preset users
 
-name: Admin
-email: admin@admin.com
-password: password
-role: Admin
+### Admin
 
-name: Guest
-email: guest@guest.com
-password: password
-role: User
+- name: Admin
+- email: admin@admin.com
+- password: password
+- role: Admin
 
-name: Joel
-email: joel@joel.com
-password: password
-role: User
+- name: Cypress
+- email: cypresscypress.com
+- password: password
+- role: Admin
 
-name: Marvelous
-email: marvelous@marvelous.com
-password: password
-role: User
+### User
 
-name: Cypress
-email: cypresscypress.com
-password: password
-role: Admin
+- name: Guest
+- email: guest@guest.com
+- password: password
+- role: User
+
+- name: Joel
+- email: joel@joel.com
+- password: password
+- role: User
+
+- name: Marvelous
+- email: marvelous@marvelous.com
+- password: password
+- role: User
