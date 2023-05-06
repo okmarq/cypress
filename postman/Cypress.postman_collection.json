@@ -108,7 +108,7 @@
 						"api-login"
 					]
 				},
-				"description": "sing in to access your tasks"
+				"description": "sign in to access your tasks"
 			},
 			"response": []
 		},
@@ -120,7 +120,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "15|ELyogOV6myYzVI6GyxYwFgrHqlOuvW9lIcSNA3nX",
+							"value": "example-token",
 							"type": "string"
 						}
 					]
