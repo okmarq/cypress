@@ -7,7 +7,9 @@ use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
+use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,11 +93,18 @@ class UsersController extends Controller
     public function activity(Request $request)
     {
         $user = auth()->user();
-        $activity = [
-            'user' => $user,
-            'assigned_to' => $user->assignedToTasks(),
-            'assigned_by' => $user->assignedByTasks()
-        ];
-        return $activity;
+        $start_date = Carbon::create($request->start_date)->format('Y-m-d H:i:s');
+        $end_date = Carbon::create($request->end_date)->format('Y-m-d H:i:s');
+
+        if ($user->getIsAdminAttribute()) {
+            $users = User::all();
+            $data = [];
+            foreach ($users as $user) {
+                $data[$user->name] = Task::where('assigned_to_id', $user->id)->whereBetween('created_at', [$start_date, $end_date])->get();
+            }
+            return $data;
+        } else {
+            return $data = [$user->name => Task::where('assigned_to_id', $user->id)->whereBetween('created_at', [$start_date, $end_date])->get()];
+        }
     }
 }
