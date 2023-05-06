@@ -41,7 +41,7 @@ login credentials for preset users
 - role: Admin
 
 - name: Cypress
-- email: cypresscypress.com
+- email: cypress@cypress.com
 - password: password
 - role: Admin
 
