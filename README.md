@@ -1,4 +1,4 @@
-# Laravel Practical Task Requirements
+# Requirements
 
 - Create an admin panel using any template you prefer with a super admin login feature.
 - In the admin panel the super admin should be able to see the dates of the calendar and create an activity for each day.
